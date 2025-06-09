@@ -23,16 +23,12 @@ function StickyBottomBar({
 
   return (
     <>
-      {/* Backdrop for mobile */}
       <div className="fixed inset-0 bg-black/20 z-40 md:hidden" onClick={onClear} />
-      
-      {/* Bottom Bar */}
+    
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-xl z-50 animate-in slide-in-from-bottom duration-300">
         <div className="mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Skip Info */}
             <div className="flex items-center space-x-4">
-              {/* Skip Icon */}
               <div className="bg-gray-100 rounded-lg p-3 hidden sm:block">
                 <div className="w-8 h-5 bg-gradient-to-r from-amber-400 to-amber-500 rounded relative">
                   <div className="absolute inset-0.5 border border-amber-600/30 rounded"></div>
@@ -41,7 +37,6 @@ function StickyBottomBar({
                 </div>
               </div>
 
-              {/* Skip Details */}
               <div className="flex-1">
                 <div className="flex items-center space-x-2">
                   <h3 className="font-semibold text-gray-900 text-lg">
@@ -67,9 +62,7 @@ function StickyBottomBar({
               </div>
             </div>
 
-            {/* Price & Actions */}
             <div className="flex items-center space-x-4">
-              {/* Price */}
               <div className="text-right">
                 <div className="text-sm text-gray-500">Total</div>
                 <div className="text-2xl font-bold text-gray-900">
@@ -77,9 +70,7 @@ function StickyBottomBar({
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex items-center space-x-2">
-                {/* Clear Button */}
                 <button
                   onClick={onClear}
                   className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200"
@@ -88,7 +79,6 @@ function StickyBottomBar({
                   <X size={20} />
                 </button>
 
-                {/* Proceed Button */}
                 <button
                   onClick={onProceed}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 shadow-sm hover:shadow-md"
@@ -101,7 +91,6 @@ function StickyBottomBar({
             </div>
           </div>
 
-          {/* Additional Info Bar */}
           <div className="mt-3 pt-3 border-t border-gray-100">
             <div className="flex items-center justify-center text-sm text-gray-600">
               <Truck size={16} className="mr-2" />

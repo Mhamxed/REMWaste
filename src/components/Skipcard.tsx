@@ -36,7 +36,6 @@ function SkipCard({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         >
-        {/* Popular Badge */}
         {popular && (
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
             <div className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -46,11 +45,9 @@ function SkipCard({
         )}
 
         <div className="p-6 flex flex-col h-full">
-            {/* Header */}
             <div className="text-center mb-6">
                 <div className="inline-block bg-gray-100 rounded-lg p-4 mb-4">
                     <div className="relative">
-                    {/* Simple Skip Illustration */}
                     <div className="w-16 h-10 bg-gradient-to-r from-amber-400 to-amber-500 rounded-lg relative">
                         <div className="absolute inset-1 border border-amber-600/30 rounded"></div>
                         <div className="absolute -top-1 left-2 w-2 h-3 bg-amber-600 rounded-t"></div>
@@ -69,7 +66,6 @@ function SkipCard({
                 </div>
             </div>
 
-            {/* Features */}
             {features && <div className="space-y-3 mb-6 flex-grow">
             {features.map((feature, index) => (
                 <div key={index} className="flex items-center text-gray-700 text-sm">
@@ -93,7 +89,6 @@ function SkipCard({
                 </span>
             </div>}
 
-            {/* Capacity Badge */}
             <div className="text-center mb-6">
                 <div className={`
                     inline-block px-3 py-1 rounded-full text-sm font-medium
@@ -105,8 +100,6 @@ function SkipCard({
                     {capacity} Capacity
                 </div>
             </div>
-
-            {/* Price */}
             <div className="text-center mb-6">
                 <div className="text-gray-500 text-sm mb-1">From</div>
                     <div className={`
@@ -116,8 +109,6 @@ function SkipCard({
                         £{price}
                     </div>
                 </div>
-
-                {/* Action Button */}
                 <button 
                 onClick={() => {
                     setSelectedSkip({

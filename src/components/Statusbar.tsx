@@ -31,7 +31,6 @@ const StatusBar: React.FC = () => {
     
     return (
       <div className="md:hidden">
-        {/* Current Step Display */}
         <div 
           className="bg-white border border-gray-200 rounded-lg p-4 cursor-pointer"
           onClick={() => setShowAllSteps(!showAllSteps)}
@@ -56,7 +55,6 @@ const StatusBar: React.FC = () => {
             />
           </div>
           
-          {/* Progress Bar */}
           <div className="mt-3">
             <div className="flex justify-between text-xs text-gray-500 mb-1">
               <span>Progress</span>
@@ -71,7 +69,6 @@ const StatusBar: React.FC = () => {
           </div>
         </div>
 
-        {/* Expandable All Steps */}
         {showAllSteps && (
           <div className="mt-2 bg-white border border-gray-200 rounded-lg p-4 space-y-3">
             {steps.map((step, index) => (
@@ -114,7 +111,6 @@ const StatusBar: React.FC = () => {
     );
   };
 
-  // Desktop Full View
   const DesktopView = () => (
     <div className="hidden md:flex items-center justify-between bg-gray-50 p-6 rounded-lg">
       {steps.map((step, index) => (
