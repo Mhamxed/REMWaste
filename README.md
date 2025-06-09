@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# Skip Selector UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a responsive React TypeScript page that displays available skip sizes fetched from the [We Want Waste API](https://app.wewantwaste.co.uk). It includes interactive skip cards and a sticky selection summary bar that appears once a user selects a skip. The UI is optimized for both desktop and mobile experiences.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **API Integration**  
+  Fetches skip data dynamically from:  
+  `https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft`
 
-## Expanding the ESLint configuration
+- **Skip Cards UI**  
+  - Each skip size (4 to 14 yards) is displayed as a card with:
+    - Yard size
+    - Hire period
+    - Features
+    - Popular
+    - is it allowed on the road or not
+    - Price
+    - "Select This Skip" button
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Sticky Summary Bar**  
+  - When a skip is selected, a sticky bar appears at the bottom of the screen showing:
+    - Skip size
+    - Price
+    - Hire duration
+    - Continue button
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Mobile Responsive Design**  
+  - added responsiveness to the progress bar
+  - Layout adapts cleanly to small screens
+  - Cards become stacked and buttons easier to tap
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Tech Stack
+
+- **React** + **TypeScript**
+- **Tailwind CSS**
+- **Fetch API** or `axios` for data retrieval
+
+## How to Run Locally
+
+```bash
+git clone https://github.com/Mhamxed/REMWaste
+cd skip-selector-ui
+npm install
+npm run dev
+
