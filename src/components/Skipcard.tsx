@@ -2,26 +2,26 @@ import { useState } from 'react';
 import { ArrowRight, Calendar, CheckCircle, TriangleAlert } from 'lucide-react';
 import type { SkipData } from '../types/SkipData';
 
-interface SkipCardProps {
-  size: string;
-  capacity: string;
-  duration: string;
-  price: number;
-  popular?: boolean;
-  features: string[];
+interface SkipCardProps extends SkipData {
+  features?: string[];
   setSelectedSkip: (selectedSkip: SkipData | null) => void;
-  allowed_on_road: boolean;
 }
 
 function SkipCard({ 
-  size, 
-  capacity, 
-  duration, 
-  price, 
-  popular = false,
-  features,
-  setSelectedSkip, 
-  allowed_on_road,
+    id,
+    size,
+    hire_period_days,
+    transport_cost,
+    per_tonne_cost,
+    price_before_vat,
+    vat,
+    area,
+    forbidden,
+    allowed_on_road,
+    allows_heavy_waste,
+    popular,
+    features,
+    setSelectedSkip, 
 }: SkipCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -57,12 +57,12 @@ function SkipCard({
                 </div>
                 
                 <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                    {size}
+                    {`${size} Yard Hire`}
                 </h3>
                 
                 <div className="flex items-center justify-center text-gray-600 text-sm">
                     <Calendar size={14} className="mr-1" />
-                    {duration}
+                    {`${hire_period_days} days`}
                 </div>
             </div>
 
@@ -97,7 +97,7 @@ function SkipCard({
                     : 'bg-gray-100 text-gray-700'
                     }
                 `}>
-                    {capacity} Capacity
+                    {size} Capacity
                 </div>
             </div>
             <div className="text-center mb-6">
@@ -106,18 +106,24 @@ function SkipCard({
                         text-3xl font-bold
                         ${popular ? 'text-blue-600' : 'text-gray-900'}
                     `}>
-                        £{price}
+                        £{price_before_vat}
                     </div>
                 </div>
                 <button 
-                onClick={() => {
-                    setSelectedSkip({
+                onClick={() => setSelectedSkip({
+                    id: id,
                     size: size,
-                    capacity: capacity,
-                    duration: duration,
-                    price: price,
-                    popular: popular
-                })}}
+                    hire_period_days: hire_period_days,
+                    transport_cost: transport_cost,
+                    per_tonne_cost: per_tonne_cost,
+                    price_before_vat: price_before_vat,
+                    vat: vat,
+                    area: area,
+                    forbidden: forbidden,
+                    allowed_on_road: allowed_on_road,
+                    allows_heavy_waste: allows_heavy_waste,
+                    popular: popular,
+                })}
                 className={`
                 w-full py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center
                 ${popular

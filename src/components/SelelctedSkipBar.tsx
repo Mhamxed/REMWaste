@@ -1,13 +1,5 @@
 import { X, ShoppingCart, ArrowRight, Calendar, Truck } from 'lucide-react';
-
-interface SkipData {
-  size: string;
-  capacity: string;
-  duration: string;
-  price: number;
-  popular?: boolean;
-} 
-
+import type { SkipData } from '../types/SkipData';
 interface StickyBottomBarProps {
   selectedSkip: SkipData | null;
   onClear: () => void;
@@ -40,7 +32,7 @@ function StickyBottomBar({
               <div className="flex-1">
                 <div className="flex items-center space-x-2">
                   <h3 className="font-semibold text-gray-900 text-lg">
-                    {selectedSkip.size}
+                    {`${selectedSkip.size} Yards Hire`}
                   </h3>
                   {selectedSkip.popular && (
                     <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">
@@ -52,11 +44,11 @@ function StickyBottomBar({
                 <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
                   <div className="flex items-center space-x-1">
                     <ShoppingCart size={14} />
-                    <span>{selectedSkip.capacity}</span>
+                    <span>{`${selectedSkip.size} Yards`}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Calendar size={14} />
-                    <span>{selectedSkip.duration}</span>
+                    <span>{`${selectedSkip.hire_period_days} days`}</span>
                   </div>
                 </div>
               </div>
@@ -66,7 +58,7 @@ function StickyBottomBar({
               <div className="text-right">
                 <div className="text-sm text-gray-500">Total</div>
                 <div className="text-2xl font-bold text-gray-900">
-                  £{selectedSkip.price}
+                  £{selectedSkip.price_before_vat}
                 </div>
               </div>
 

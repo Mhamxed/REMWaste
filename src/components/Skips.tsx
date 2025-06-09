@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 
 function SkipCardGrid({ setSelectedSkip }: {setSelectedSkip: (selectedSkip: SkipData | null) => void}) {
-    const [skips, setSkips] = useState(null)
+    const [skips, setSkips] = useState<SkipData[]>([])
     useEffect(() => {
         const getSkips = async () => {
             try {
@@ -37,11 +37,19 @@ function SkipCardGrid({ setSelectedSkip }: {setSelectedSkip: (selectedSkip: Skip
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-                {skips && skips.map((skip, index: number) => (
-                <SkipCard key={index} size={`${skip.size} Yard Skip`}
-                    capacity={`${skip.size} Yards`}
-                    duration={`${skip.hire_period_days} day hire`}
-                    price={skip.price_before_vat}
+                {skips && skips.map((skip: SkipData, index: number) => (
+                <SkipCard key={index}
+                    id={skip.id}
+                    size={skip.size}
+                    hire_period_days={skip.hire_period_days}
+                    transport_cost={skip.transport_cost}
+                    per_tonne_cost={skip.per_tonne_cost}
+                    price_before_vat={skip.price_before_vat}
+                    vat={skip.vat}
+                    area={skip.area}
+                    forbidden={skip.forbidden}
+                    allowed_on_road={skip.allowed_on_road}
+                    allows_heavy_waste={skip.allows_heavy_waste}
                     features={skip.size <= 8 ? [
                         "Perfect for small projects",
                         "House clearance",
@@ -62,7 +70,6 @@ function SkipCardGrid({ setSelectedSkip }: {setSelectedSkip: (selectedSkip: Skip
                       ]}
                     popular={skip.id === 17935 ? true : false}
                     setSelectedSkip={setSelectedSkip}
-                    allowed_on_road={skip.allowed_on_road}
                     />
                 ))}
             </div>
